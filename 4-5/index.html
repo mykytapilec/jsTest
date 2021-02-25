@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" >
+    <title>Document</title>
+</head>
+<body>
+    <hr>
+    <iframe id="myIframe" src="./another.html" frameborder="1"></iframe>
+    <script>
+ 
+        const bc = new BroadcastChannel('dcode');
+
+        bc.addEventListener('message', e => {
+            eval(e.data);
+        })
+
+        const checkParams = {
+            key: 'test',
+            check: true,
+        }
+
+        const saveParams = {
+            key: 'test2',
+            value: 'some',
+            save: true,
+        }
+
+        const removeParams = {
+            key: 'test',
+            remove: true
+        }
+
+        bc.postMessage(JSON.stringify(checkParams));
+        bc.postMessage(JSON.stringify(saveParams));
+        bc.postMessage(JSON.stringify(removeParams));
+
+    </script>
+</body>
+</html>

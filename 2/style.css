@@ -1,0 +1,42 @@
+* {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: white;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12;
+    line-height: 1.5;
+}
+
+p {
+    font-size: 16;
+    font-weight: bold;
+} 
+
+#content {
+    width: 400px;
+    margin-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    text-align: center;
+}
+
+.size {
+    margin: 10px;
+}
+
+.color {
+    margin: 10px;
+}
+
+.manufacturer {
+    margin: 10px;
+}
+
+.sale {
+    margin: 10px;
+}

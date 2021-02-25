@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>5555</h1>
+    <script>
+        localStorage.setItem('test', 'test');
+
+        const bc = new BroadcastChannel('dcode');
+        
+        const cb = "console.log('cb')";
+
+        bc.addEventListener('message', e => {
+            const params = JSON.parse(e.data);
+            for(let key in localStorage) {
+                if(key === params.key){
+                    if(params.check){
+                        console.log(localStorage.getItem(key));
+                        bc.postMessage(cb);
+                    } 
+
+                    if(params.remove){
+                        localStorage.removeItem(key);
+                        console.log('removed');
+                        bc.postMessage(cb);
+                    } 
+                } else {
+                    if(params.save){
+                        localStorage.setItem(params.key, params.value);
+                        console.log('written');
+                        bc.postMessage(cb);
+                    } 
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
